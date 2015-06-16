@@ -69,7 +69,7 @@ end
 class Board
   def initialize
     @hero = Hero.new
-    @enemies = 7.times.map do |i|
+    @enemies = (Enemy::NAMES.length).times.map do |i|
       Enemy.new(i)
     end
   end
@@ -92,20 +92,22 @@ class Board
   end
 
   def play
+    score = 0
     system 'clear'
     slow_print "TEXT ADVENTURE!", :light_red
-
     while enemy = @enemies.shift
       slow_print "You run into a new scary room.  In the darkness, something yells #{enemy}", :blue
       if victory?(enemy)
+        score = score + 1
         slow_print "You lived. Press enter key to continue.", :green
         gets
         system 'clear'
       else
-        slow_print "You just died. lol", :red
+        slow_print "You died. Your final score was: #{score}.", :red
         return false
       end
     end
+    slow_print "You won! Your final score was: #{score}.", :light_blue
   end
 end
 
