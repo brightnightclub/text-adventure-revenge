@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require_relative 'models/all'
 
 def print_status(player)
@@ -16,7 +17,6 @@ puts "WELCOME TO ADVENTURELAND"
 
 world = World.new
 player = world.player
-
 
 ARGF.each do |line|
   player.location.portals.each do |portal|

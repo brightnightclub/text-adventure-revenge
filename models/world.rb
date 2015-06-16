@@ -17,4 +17,10 @@ class World
     self.levels = [level]
     self.player = Player.new(level.rooms.first)
   end
+
+  # When you change the level, move the player to the first room of the new level
+  def level=(level)
+    self.level = level
+    self.player.location = level.rooms.first
+  end
 end
