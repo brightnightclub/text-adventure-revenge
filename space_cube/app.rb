@@ -20,6 +20,7 @@ class Game < Thor
     first_move = true
 
     puts "\nYou are surrounded on all sides by airlocks.
+    The suit's transponder beeps it's distance.
     Please choose a direction.  Valid directions are:
       up, down, left, right, back, forward"
 
