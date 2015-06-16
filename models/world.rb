@@ -24,3 +24,5 @@ class World
     self.player.location = level.rooms.first
   end
 end
+
+require_relative '../seeds'

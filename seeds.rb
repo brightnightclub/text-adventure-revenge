@@ -1,7 +1,6 @@
 level = Level.new
 rooms = Array.new(6){Room.new}
 
-rooms[6](description: "u won, coward")
 
 rooms[0].name = "outside the castle gates"
 rooms[0].description = "You stand in front of a grand old gateway attached an old ass castle which looms loomingly above you. The mists close behind you, limiting your visibility to a few meters. A howl wolves in the distance."
@@ -12,20 +11,20 @@ rooms[0].portals = [
 
 rooms[1].name = "the grand entrance hall"
 rooms[1].description = "Before you, you see a windy staircase (the top of which you cannot see) and a door to your left that looks like it leads to a dungeon (due to the bloody corpse sitting infront of it that happens to be grasping a dirty old sponge) "
-rooms[1].items = [
-  Item.new(name: "dirty old sponge"),
-  Item.new(name: "flowers in a shiny vase")
-]
+# rooms[1].items = [
+#   Item.new(name: "dirty old sponge"),
+#   Item.new(name: "flowers in a shiny vase")
+# ]
 rooms[1].portals = [
-  Portal.new(destination: rooms[3])
-  Portal.new(destination: rooms[4]),
+  Portal.new(destination: rooms[3]),
+  Portal.new(destination: rooms[4])
 ]
 
 rooms[2].name = "the gate to the castle grounds"
 rooms[2].description = "You have stumbled your way to the exit from the dreary castle grounds. The gates are open to the south, and you can make out the path back to the castle entrance to the north. You swear you can hear the wind whispering 'cowaaaaaaard' across your ears."
 rooms[2].portals = [
-  Portal.new(destination: rooms[0])
-  Portal.new(destination: rooms[6])
+  Portal.new(destination: rooms[0]),
+  Portal.new(destination: rooms[5])
 ]
 
 rooms[3].name = "up into the tallest tower"
@@ -42,4 +41,8 @@ rooms[4].portals = [
   Portal.new(destination: rooms[2])
 ]
 
+rooms[5].description = "u won, coward"
+
+
 level.rooms = rooms
+World.world.level = level
