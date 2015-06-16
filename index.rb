@@ -31,13 +31,23 @@ class Enemy < Player
     'Mean Bear'
   ]
 
+  INTROS = [
+    "Yarr!",
+    "Hello there, friend!",
+    "Fee Fi FO FUMMM!",
+    "Something stinks!",
+    "<Loud slobbering>",
+    "GRRRRRRRRRR"
+  ]
+
   def initialize(attack_score)
     @name = NAMES[attack_score]
+    @intro = INTROS.sample
     super
   end
 
   def to_s
-    "Yarr! I'm a #{@name}!"
+    "#{@intro} I'm a #{@name}!"
   end
 end
 
