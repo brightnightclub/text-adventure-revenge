@@ -2,15 +2,11 @@ require 'pry'
 
 class Player
   include Comparable
-  attr_writer :attack_score
+  attr_accessor :attack_score
   attr_accessor :name
 
   def initialize(attack_score)
     @attack_score = attack_score
-  end
-
-  def attack_score
-    @attack_score# * (rand(10)+1)/10
   end
 
   def <=>(other)
@@ -30,9 +26,9 @@ class Enemy < Player
     'Wolf',
     'Elf',
     'Mamma Dragon',
-    'Monster2',
-    'Monster3',
-    'Monster4'
+    'Unicorn Lion',
+    'Fantasy Tiger',
+    'Mean Bear'
   ]
 
   def initialize(attack_score)
@@ -49,6 +45,13 @@ class Hero < Player
   def initialize
     @name = 'Hero!'
     super(4)
+  end
+
+  def attack_score
+    roll = rand(5) + 1
+    value = @attack_score + roll
+    slow_print "You rolled a #{roll}..."
+    value
   end
 end
 
@@ -88,7 +91,7 @@ class Board
         gets
         system 'clear'
       else
-        slow_print "you just died. lol"
+        slow_print "You just died. lol"
         return false
       end
     end
