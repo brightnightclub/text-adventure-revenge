@@ -1,0 +1,5 @@
+require_relative 'room'
+require_relative 'portal'
+require_relative 'player'
+require_relative 'level'
+require_relative 'world'
