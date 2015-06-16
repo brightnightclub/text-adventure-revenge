@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+
+  class Location
+
+    attr_reader :name
+    attr_reader :message
+
+    def initialize(name, message=nil)
+      @name = name
+      @message = message
+      @neighborhood = {}
+    end
+
+    def add_direction(direction, neighbor)
+      @neighborhood[direction] = neighbor
+    end
+
+    def next_location(direction)
+      if @neighborhood[direction]
+        @neighborhood[direction]
+      else
+        puts 'MR. ROGERS SAYS YOU CAN\'T GO THAT WAY'
+        self
+      end
+    end
+      end
+
+  class KitchenWorld
+
+    def initialize
+      require_relative "data"
+      @current_location = TRASHBIN
+    end
+
+    def winning_move location
+      message = "CONGRATULATIONS! YOU GOT THE #{location.name.upcase}"
+      `say '#{message}'`
+    end
+
+    def losing_move location
+      message = "GAME OVER - YOU ENDED UP IN THE #{location.name.upcase}!"
+      `say '#{message}'`
+    end
+
+    def run
+      loop do
+        puts @current_location.message
+        command = gets
+        if command =~ /r/i
+          @current_location = @current_location.next_location("right")
+        elsif command =~ /l/i
+          @current_location = @current_location.next_location('left')
+        elsif command =~ /u/i
+          @current_location = @current_location.next_location('up')
+        elsif command =~ /d/i
+          @current_location = @current_location.next_location('down')
+        else
+          puts 'PLEASE CHOOSE AN ACTUAL DIRECTION, DUMBASS'
+        end
+
+        if [TOASTER, GARBAGE_DISPOSAL].include? @current_location
+          losing_move @current_location
+          break
+        end
+
+        if [PORTABLE_BANANA_HOLDER, CHICKEN_SCRAPS].include? @current_location
+          winning_move @current_location
+          break
+        end
+      end
+    end
+
+  end
+
+
+puts "Welcome to Kitchenworld - choose a direction and try to find the bananas and chicken scraps!" ## write in data.rb
+k = KitchenWorld.new
+k.run ## need this method in KitchenWorld
