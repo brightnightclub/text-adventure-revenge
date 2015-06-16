@@ -63,36 +63,44 @@ class Board
   def victory?(enemy)
     while true
 
-      puts "What would you like to do? [fight, run]"
+      slow_print "What would you like to do? [fight, run]"
       case gets.chomp
       when 'fight'
-        puts "you are fighting."
+        slow_print "you are fighting."
         return @hero > enemy
       when 'run'
-        puts "you are running"
+        slow_print "you are running"
         return true
       else
-        puts "What? That was not a valid action. Try again!"
+        slow_print "What? That was not a valid action. Try again!"
       end
     end
   end
 
   def play
     system 'clear'
-    puts "TEXT ADVENTURE!"
+    slow_print "TEXT ADVENTURE!"
 
     while enemy = @enemies.shift
-      puts "You run into a new scary room.  In the darkness, something yells #{enemy}"
+      slow_print "You run into a new scary room.  In the darkness, something yells #{enemy}"
       if victory?(enemy)
-        puts "You lived. Press enter key to continue."
+        slow_print "You lived. Press enter key to continue."
         gets
         system 'clear'
       else
-        puts "you just died. lol"
+        slow_print "you just died. lol"
         return false
       end
     end
   end
+end
+
+def slow_print(text)
+  text.each_char do |char|
+    print char
+    sleep 0.025
+  end
+  print "\n"
 end
 
 Board.new.play
