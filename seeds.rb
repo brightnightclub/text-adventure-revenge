@@ -45,4 +45,4 @@ rooms[5].description = "u won, coward"
 
 
 level.rooms = rooms
-World.world.level = level
+World.get.level = level
