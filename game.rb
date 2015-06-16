@@ -1,4 +1,3 @@
-
 require_relative 'models/all'
 
 def print_status(player)
@@ -32,6 +31,5 @@ ARGF.each do |line|
   end
 
   print_status(player)
-  
-end
 
+end
