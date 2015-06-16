@@ -1,4 +1,5 @@
 require 'pry'
+require 'colorize'
 
 class Player
   include Comparable
@@ -60,7 +61,7 @@ class Hero < Player
   def attack_score
     roll = rand(5) + 1
     value = @attack_score + roll
-    slow_print "You rolled a #{roll}..."
+    slow_print "You rolled a #{roll}...", :blue
     value
   end
 end
@@ -76,41 +77,41 @@ class Board
   def victory?(enemy)
     while true
 
-      slow_print "What would you like to do? [fight, run]"
+      slow_print "What would you like to do? [fight, run]", :blue
       case gets.chomp
       when 'fight'
-        slow_print "you are fighting."
+        slow_print "you are fighting.", :blue
         return @hero > enemy
       when 'run'
-        slow_print "you are running"
+        slow_print "you are running", :blue
         return true
       else
-        slow_print "What? That was not a valid action. Try again!"
+        slow_print "What? That was not a valid action. Try again!", :yellow
       end
     end
   end
 
   def play
     system 'clear'
-    slow_print "TEXT ADVENTURE!"
+    slow_print "TEXT ADVENTURE!", :light_red
 
     while enemy = @enemies.shift
-      slow_print "You run into a new scary room.  In the darkness, something yells #{enemy}"
+      slow_print "You run into a new scary room.  In the darkness, something yells #{enemy}", :blue
       if victory?(enemy)
-        slow_print "You lived. Press enter key to continue."
+        slow_print "You lived. Press enter key to continue.", :green
         gets
         system 'clear'
       else
-        slow_print "You just died. lol"
+        slow_print "You just died. lol", :red
         return false
       end
     end
   end
 end
 
-def slow_print(text)
+def slow_print(text, color = :black)
   text.each_char do |char|
-    print char
+    print char.colorize(color)
     sleep 0.025
   end
   print "\n"
