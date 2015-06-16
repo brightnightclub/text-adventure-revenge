@@ -23,4 +23,8 @@ class World
     self.level = level
     self.player.location = level.rooms.first
   end
+
+  def self.get
+    @world ||= World.new
+  end
 end

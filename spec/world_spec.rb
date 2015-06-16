@@ -14,5 +14,9 @@ describe World do
     end
   end
 
+  it 'should have a singleton getter' do
+    expect(World.get).to be_a World
+  end
+
 end
 
