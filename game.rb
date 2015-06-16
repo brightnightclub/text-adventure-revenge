@@ -15,7 +15,7 @@ end
 
 puts "WELCOME TO ADVENTURELAND"
 
-world = World.new
+world = World.get
 player = world.player
 
 ARGF.each do |line|
