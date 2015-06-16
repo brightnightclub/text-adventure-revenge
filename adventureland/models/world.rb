@@ -20,7 +20,7 @@ class World
 
   # When you change the level, move the player to the first room of the new level
   def level=(level)
-    self.level = level
+    @level = level
     self.player.location = level.rooms.first
   end
 
@@ -28,3 +28,5 @@ class World
     @world ||= World.new
   end
 end
+
+require_relative '../seeds'

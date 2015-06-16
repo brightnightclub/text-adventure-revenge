@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
 require_relative 'models/all'
 
 def print_status(player)
@@ -16,7 +15,7 @@ end
 
 puts "WELCOME TO ADVENTURELAND"
 
-world = World.new
+world = World.get
 player = world.player
 
 ARGF.each do |line|
@@ -32,6 +31,5 @@ ARGF.each do |line|
   end
 
   print_status(player)
-  
-end
 
+end
