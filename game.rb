@@ -19,7 +19,6 @@ puts "WELCOME TO ADVENTURELAND"
 world = World.new
 player = world.player
 
-
 ARGF.each do |line|
   player.location.portals.each do |portal|
     if line.strip == ''
